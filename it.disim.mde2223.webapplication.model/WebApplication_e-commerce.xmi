@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wa:WebApplication
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:wa="https://it.disim.mde2223/webapplication"
+    xsi:schemaLocation="https://it.disim.mde2223/webapplication WebApplication.ecore"
+    name="e-commerce"
+    dark_mode="true">
+  <pages name="home">
+    <page_contents>
+      <content_entities
+          name="e-commerce info">
+        <attributes
+            name="trending products"/>
+        <references
+            link="navigation_db"/>
+      </content_entities>
+    </page_contents>
+  </pages>
+  <pages name="registration">
+    <page_contents
+        xsi:type="wa:Form"
+        captcha="true">
+      <form_elements>
+        <element_Type>Textbox</element_Type>
+      </form_elements>
+      <form_elements>
+        <element_Type>dropdown</element_Type>
+      </form_elements>
+    </page_contents>
+  </pages>
+  <pages name="product">
+    <page_contents>
+      <content_entities
+          name="products_info">
+        <attributes
+            name="category"/>
+        <references
+            link="product_db"/>
+      </content_entities>
+    </page_contents>
+    <page_contents
+        xsi:type="wa:DContent"
+        name="products">
+      <dcontent_lists
+          name="products_list"
+          length="78"/>
+      <dcontent_individuals
+          name="discount"
+          value="50"
+          index_key="2"/>
+    </page_contents>
+  </pages>
+  <pages name="cart">
+    <page_contents>
+      <content_entities
+          name="cart_info">
+        <attributes
+            name="payment_method"/>
+        <references
+            link="cart_db"/>
+      </content_entities>
+    </page_contents>
+    <page_contents
+        xsi:type="wa:DContent"
+        name="products_in_cart">
+      <dcontent_lists
+          name="products_added_to_cart"
+          length="11"/>
+      <dcontent_individuals
+          name="number_of_products_in_cart"
+          value="2"
+          index_key="1"/>
+    </page_contents>
+  </pages>
+</wa:WebApplication>

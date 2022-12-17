@@ -1,0 +1,111 @@
+@"http://www.eclipse.org/OCL/Import"(ecore="http://www.eclipse.org/emf/2002/Ecore")
+@Ecore(invocationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", settingDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", validationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot")
+@namespace(uri="https://it.disim.mde2223/webapplication", prefix="wa")
+package Web;
+
+class WebApplication extends NamedElement {
+
+	@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(body="dark_mode")
+	op Boolean Get_Mode();
+	val Entity[*] entities;
+	val Index[*] indexes;
+	val Page[+] pages;
+	val NamedElement named_elements;
+	derived attr boolean[1] dark_mode;
+}
+
+class Entity extends NamedElement {
+	val Attribute[*] attributes;
+	val Reference[*] references;
+}
+
+class Attribute extends NamedElement {
+	attr _DataType type;
+	attr boolean[1] isPK;
+}
+
+@Ecore(constraints="NameIsLowerCase")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(NameIsLowerCase="Tuple {
+	message : String = 'Expected a lower case word' + name + '',
+	status : Boolean = 
+			name = name.toLowerCase()
+}.status")
+class NamedElement {
+	attr String name;
+}
+
+class Index extends NamedElement {
+	ref Attribute[1] indexAttribute;
+}
+
+enum _DataType {
+	String = 0;
+	int = 0;
+}
+
+@Ecore(constraints="DatabaseValidation")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(DatabaseValidation="Tuple {
+	message : String = 'Every content should be connected to database',
+	status : Boolean = 
+			link.substring(link.size()-1, link.size()) = 'db'
+}.status")
+class Reference {
+	attr String link;
+}
+
+class Content {
+	val Entity[*] content_entities;
+}
+
+@Ecore(constraints="BotValidation")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(BotValidation="Tuple {
+	message : String = 'captcha should be approved',
+	status : Boolean = 
+			captcha = true
+}.status")
+class Form extends Content {
+	val Element[*] form_elements;
+	attr boolean[1] captcha;
+}
+
+class Page extends NamedElement {
+	val Content[*] page_contents;
+}
+
+class DContent extends Content, NamedElement {
+	val DContent_List[*] dcontent_lists;
+	val DContent_Individual[*] dcontent_individuals;
+}
+
+class Element {
+	attr _InputType element_Type;
+}
+
+enum _InputType {
+	Dropdown = 0;
+	Textbox = 0;
+}
+
+@Ecore(constraints="ListLength")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(ListLength="Tuple {
+	message : String = 'list can not be empty',
+	status : Boolean = 
+			length > 0
+}.status")
+class DContent_List extends DContent {
+	attr int[1] length;
+}
+
+class DContent_Individual extends DContent {
+
+	@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(body="100.div(value) * 100")
+	op int[1] Percentage();
+	attr int[1] index_key;
+	attr int[1] value;
+}
+
+enum _dcontentType {
+	list = 0;
+	individual = 0;
+}
+

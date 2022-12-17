@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/it.disim.mde2223.webapplication.model/src" modelPluginID="it.disim.mde2223.webapplication.model"
+    modelName="WebApplication" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>WebApplication.ecore</foreignModel>
+  <genPackages prefix="Web" disposableProviderFactory="true" ecorePackage="WebApplication.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WebApplication.ecore#//_DataType">
+      <genEnumLiterals ecoreEnumLiteral="WebApplication.ecore#//_DataType/String"/>
+      <genEnumLiterals ecoreEnumLiteral="WebApplication.ecore#//_DataType/int"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WebApplication.ecore#//_InputType">
+      <genEnumLiterals ecoreEnumLiteral="WebApplication.ecore#//_InputType/Dropdown"/>
+      <genEnumLiterals ecoreEnumLiteral="WebApplication.ecore#//_InputType/Textbox"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WebApplication.ecore#//_dcontentType">
+      <genEnumLiterals ecoreEnumLiteral="WebApplication.ecore#//_dcontentType/list"/>
+      <genEnumLiterals ecoreEnumLiteral="WebApplication.ecore#//_dcontentType/individual"/>
+    </genEnums>
+    <genClasses ecoreClass="WebApplication.ecore#//WebApplication">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WebApplication.ecore#//WebApplication/entities"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WebApplication.ecore#//WebApplication/indexes"/>
+      <genFeatures notify="false" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference WebApplication.ecore#//WebApplication/pages"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WebApplication.ecore#//WebApplication/named_elements"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WebApplication.ecore#//WebApplication/dark_mode"/>
+      <genOperations ecoreOperation="WebApplication.ecore#//WebApplication/Get_Mode"/>
+    </genClasses>
+    <genClasses ecoreClass="WebApplication.ecore#//Entity">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WebApplication.ecore#//Entity/attributes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WebApplication.ecore#//Entity/references"/>
+    </genClasses>
+    <genClasses ecoreClass="WebApplication.ecore#//Attribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WebApplication.ecore#//Attribute/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WebApplication.ecore#//Attribute/isPK"/>
+    </genClasses>
+    <genClasses ecoreClass="WebApplication.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WebApplication.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="WebApplication.ecore#//Index">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WebApplication.ecore#//Index/indexAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="WebApplication.ecore#//Reference">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WebApplication.ecore#//Reference/link"/>
+    </genClasses>
+    <genClasses ecoreClass="WebApplication.ecore#//Content">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WebApplication.ecore#//Content/content_entities"/>
+    </genClasses>
+    <genClasses ecoreClass="WebApplication.ecore#//Form">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WebApplication.ecore#//Form/form_elements"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WebApplication.ecore#//Form/captcha"/>
+    </genClasses>
+    <genClasses ecoreClass="WebApplication.ecore#//Page">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WebApplication.ecore#//Page/page_contents"/>
+    </genClasses>
+    <genClasses ecoreClass="WebApplication.ecore#//DContent">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WebApplication.ecore#//DContent/dcontent_lists"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WebApplication.ecore#//DContent/dcontent_individuals"/>
+    </genClasses>
+    <genClasses ecoreClass="WebApplication.ecore#//Element">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WebApplication.ecore#//Element/element_Type"/>
+    </genClasses>
+    <genClasses ecoreClass="WebApplication.ecore#//DContent_List">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WebApplication.ecore#//DContent_List/length"/>
+    </genClasses>
+    <genClasses ecoreClass="WebApplication.ecore#//DContent_Individual">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WebApplication.ecore#//DContent_Individual/index_key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WebApplication.ecore#//DContent_Individual/value"/>
+      <genOperations ecoreOperation="WebApplication.ecore#//DContent_Individual/Percentage"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

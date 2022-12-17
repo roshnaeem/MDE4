@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wa:WebApplication
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:wa="https://it.disim.mde2223/webapplication"
+    xsi:schemaLocation="https://it.disim.mde2223/webapplication WebApplication.ecore"
+    name="news">
+  <entities
+      name="article">
+    <attributes
+        name="headline"/>
+    <references
+        link="news_db"/>
+  </entities>
+  <pages name="home">
+    <page_contents>
+      <content_entities
+          name="news_info">
+        <attributes
+            name="headlines"/>
+        <references
+            link="pages_db"/>
+      </content_entities>
+    </page_contents>
+  </pages>
+  <pages name="signup">
+    <page_contents
+        xsi:type="wa:Form"
+        captcha="true">
+      <form_elements>
+        <element_Type>Textbox</element_Type>
+      </form_elements>
+      <form_elements>
+        <element_Type>dropdown</element_Type>
+      </form_elements>
+    </page_contents>
+  </pages>
+  <pages name="sports">
+    <page_contents>
+      <content_entities
+          name="sports_info">
+        <attributes
+            name="title"
+            isPK="true"/>
+        <references
+            link="sports_db"/>
+      </content_entities>
+    </page_contents>
+    <page_contents
+        xsi:type="wa:DContent"
+        name="match_feed">
+      <dcontent_lists
+          name="players"
+          length="11"/>
+      <dcontent_individuals
+          name="score"
+          value="45"
+          index_key="1"/>
+    </page_contents>
+  </pages>
+  <pages name="weather">
+    <page_contents>
+      <content_entities
+          name="weather_info">
+        <attributes
+            name="temperature"/>
+        <references
+            link="weather_db"/>
+      </content_entities>
+    </page_contents>
+    <page_contents
+        xsi:type="wa:DContent"
+        name="weather_forecast"/>
+  </pages>
+</wa:WebApplication>
